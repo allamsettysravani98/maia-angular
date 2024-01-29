@@ -1,0 +1,160 @@
+<div class="container">
+  <div class="input-group rounded">
+    <input
+      type="search"
+      class="form-control rounded"
+      placeholder="Search"
+      aria-label="Search"
+      aria-describedby="search-addon"
+      [(ngModel)]="searchText"
+      (input)="applyFilter()"
+    />
+    <span
+      class="input-group-text border-0"
+      id="search-addon"
+      style="cursor: pointer"
+    >
+      <i class="fas fa-search" style="cursor: pointer"></i>
+    </span>
+  </div>
+  <!-- <input type="text" [(ngModel)]="searchText" (input)="applyFilter()" /> -->
+  <table class="table table-bordered mt-2">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">NO</th>
+        <th scope="col" (click)="sortByColumn('register_no')">
+          {{ "RegisterNo" | translate }}
+          <i class="fa" [ngClass]="sortIcon('register_no')"></i>
+        </th>
+        <th scope="col" (click)="sortByColumn('first_name')">
+          {{ "FirstName" | translate }}
+          <i class="fa" [ngClass]="sortIcon('first_name')"></i>
+        </th>
+        <th scope="col" (click)="sortByColumn('email')">
+          {{ "Email" | translate }}
+          <i class="fa" [ngClass]="sortIcon('email')"></i>
+        </th>
+        <th scope="col" (click)="sortByColumn('user_role_name')">
+          User Role <i class="fa" [ngClass]="sortIcon('user_role_name')"></i>
+        </th>
+        <th scope="col">{{ "Action" | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let user of users; let i = index">
+        <td class="text-center">{{ i + 1 }}</td>
+        <td>{{ user.register_no }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.user_role_name }}</td>
+        <td (click)="Byid(user.id)" data-target="#exampleModalCenter">
+          <i class="fa fa-eye" style="cursor: pointer"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--  -->
+
+<div
+  class="modal"
+  tabindex="-2"
+  role="dialog"
+  style="margin-top: 4%"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">
+          {{ "User" | translate }} {{ "Data" | translate }}
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="row p-1">
+          <label class="col-sm-4 p-2">{{ "RegisterNo" | translate }}</label>
+          <input
+            type="register_no"
+            name="register_no"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.register_no"
+            readonly
+          />
+        </div>
+        <div class="row p-2">
+          <label class="col-sm-4 p-2">{{ "FirstName" | translate }}</label>
+          <input
+            type="firstName"
+            name="firstName"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.first_name"
+            readonly
+          />
+        </div>
+        <div class="row p-2">
+          <label class="col-sm-4 p-2">{{ "LastName" | translate }}</label>
+          <input
+            type="lastName"
+            name="lastName"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.last_name"
+            readonly
+          />
+        </div>
+        <div class="row p-2">
+          <label class="col-sm-4 p-2">{{ "Email" | translate }}</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.email"
+            readonly
+          />
+        </div>
+        <div class="row p-2">
+          <label class="col-sm-4 p-2">{{ "UserRole" | translate }}</label>
+          <input
+            type="userrole"
+            name="userrole"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.user_role_name"
+            readonly
+          />
+        </div>
+        <div class="row p-2">
+          <label class="col-sm-4 p-2">{{ "Country" | translate }}</label>
+          <input
+            type="country"
+            name="country"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.country"
+            readonly
+          />
+        </div>
+        <div class="row p-2">
+          <label class="col-sm-4 p-2">{{ "DOB" | translate }}</label>
+          <input
+            type="dob"
+            name="dob"
+            class="form-control col p-2"
+            placeholder=""
+            [(ngModel)]="popup.dob"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="modal-footer" style="cursor: pointer">
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
+          {{ "Close" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

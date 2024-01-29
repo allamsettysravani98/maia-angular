@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row text-left p-2" style="width: 99rem">
+    <div *ngFor="let nd of topHeadlinesData" class="col-lg-5 mt-4 mb-4">
+      <div class="box" *ngIf="nd.urlToImage">
+        <img src="{{ nd.urlToImage }}" width="100%" />
+        <h5 mt-3 mb-4>{{ nd.title }}</h5>
+        <a class="btn btn-dark btn-sm" target="_black" href="{{ nd.url }}"
+          >Read More</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <p class="text-center" style="font-weight: bold">
+    &copy; & &reg; by TC NEWS 2021
+  </p>
+</footer>

@@ -1,0 +1,305 @@
+<!-- <div class="container">
+  <div class="my-5"> -->
+<!-- <div class="col col-sm-4 col-md text-center">
+      <h5 (click)="getaboutmaia()">About maia-x</h5>
+    </div>
+    <div class="col col-sm-4 col-md text-center">
+      <h5 (click)="getaboutsolid()">About solid</h5>
+    </div>
+    <div class="col col-sm-4 col-md text-center">
+      <h5>News</h5>
+    </div> -->
+<!-- <div class="col col-sm-4 col-md text-center">
+      <h5>Blog</h5>
+    </div>
+    <div class="col col-sm-4 col-md text-center">
+      <h5>FAQ</h5>
+    </div> -->
+<!-- </div> -->
+<!-- <div class="container">
+    <div class="text">
+      <angular-editor
+        [placeholder]="'Enter text here...'"
+        [(ngModel)]="htmlContent"
+      ></angular-editor>
+    </div>
+  </div>
+  <div class="text-center">
+    <button
+      class="mt-3"
+      *ngIf="isButtonVisible"
+      type="button"
+      (click)="update(this.aboutmaia.page_name)"
+    >
+      <b>Update</b>
+    </button>
+  </div> -->
+<!-- </div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2 mx-auto">
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getaboutmaia()">
+          <a>{{ "Aboutmaiax" | translate }}</a>
+        </h5>
+      </div>
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getaboutsolid()">
+          <a>{{ "AboutSolid" | translate }}</a>
+        </h5>
+      </div>
+      <!--  -->
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getlanding_header()">
+          <a>{{ "TopBanner" | translate }}</a>
+        </h5>
+      </div>
+      <!--  -->
+      <!--  -->
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getsession1()">
+          <a>{{ "FirstSection" | translate }} </a>
+        </h5>
+      </div>
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getsession2()">
+          <a>{{ "SecondSection" | translate }}</a>
+        </h5>
+      </div>
+      <!--  -->
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getlandindsession2()">
+          <a>{{ "CenterContent" | translate }}</a>
+        </h5>
+      </div>
+
+      <!--  -->
+      <div class="text-left p-2" style="cursor: pointer">
+        <h5 (click)="getsliderimages()">
+          <a>{{ "SliderImage" | translate }}</a>
+        </h5>
+      </div>
+
+      <div class="text-left p-2" style="cursor: pointer">
+        <a href="#submenu4" data-bs-toggle="collapse" class="nav-link">
+          <h5>{{ "ThreePillers" | translate }}</h5></a
+        >
+        <tr id="submenu4" data-bs-parent="#menu">
+          <h6 class="mx-2 pt-2" (click)="getlandindcard(3)">
+            <a>{{ "card-1" | translate }}</a>
+          </h6>
+          <h6 class="mx-2 pt-2" (click)="getlandindcard(4)">
+            <a>{{ "card-2" | translate }}</a>
+          </h6>
+          <h6 class="mx-2 pt-2" (click)="getlandindcard(5)">
+            <a>{{ "card-3" | translate }}</a>
+          </h6>
+        </tr>
+      </div>
+      <!--  -->
+      <!-- <div class="text-left p-2">
+        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link">
+          <h5>Footer 1A</h5></a
+        >
+        <tr
+          *ngFor="let item of footer_data.footer_links_column1"
+          id="submenu1"
+          data-bs-parent="#menu"
+        >
+          <h6 class="mx-2" (click)="getfootercontent(item.id)">
+            <a>{{ item.page_name }}</a>
+          </h6>
+        </tr>
+      </div> -->
+      <!--  -->
+      <!-- <div class="text-left p-2">
+        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link">
+          <h5>Footer 2A</h5></a
+        >
+        <tr
+          *ngFor="let item of footer_data.footer_links_column2"
+          id="submenu2"
+          data-bs-parent="#menu"
+        >
+          <h6 class="mx-2" (click)="getfootercontent(item.id)">
+            <a>{{ item.page_name }}</a>
+          </h6>
+        </tr>
+      </div> -->
+      <!--  -->
+      <!-- <div class="text-left p-2">
+        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
+          <h5>Footer 3A</h5></a
+        >
+        <tr
+          *ngFor="let item of footer_data.footer_links_column3"
+          id="submenu3"
+          data-bs-parent="#menu"
+        >
+          <h6 class="mx-2" (click)="getfootercontent(item.id)">
+            <a>{{ item.page_name }}</a>
+          </h6>
+        </tr>
+      </div> -->
+      <!--  -->
+    </div>
+    <div class="col" *ngIf="card" style="margin-bottom: 10%">
+      <div class="container">
+        <div class="container">
+          <div *ngIf="issessionHeaderVisible">
+            <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+            <input
+              type="session_header"
+              name="session_header"
+              class="form-control mb-5"
+              *ngIf="issessionHeaderVisible"
+              placeholder=""
+              [(ngModel)]="session.heading"
+            />
+          </div>
+          <div *ngIf="issessionHeader1Visible">
+            <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+            <input
+              type="session_header"
+              name="session_header"
+              class="form-control mb-5"
+              placeholder=""
+              [(ngModel)]="landingsession2.heading"
+            />
+            <h1 class="mb-2">{{ "Heading-1" | translate }}</h1>
+            <input
+              type="session_header"
+              name="session_header"
+              class="form-control mb-5"
+              placeholder=""
+              [(ngModel)]="landingsession2.heading2"
+            />
+          </div>
+          <div class="text">
+            <angular-editor
+              [placeholder]="'Enter text here...'"
+              [(ngModel)]="htmlContent"
+            ></angular-editor>
+          </div>
+          <div class="row" style="display: flex">
+            <img
+              id=""
+              *ngIf="issessionHeaderVisible"
+              [src]="session.image"
+              style="
+                height: auto;
+                width: 25%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+              "
+              class="img-responsive icons-img"
+              alt=""
+            />
+            <div class="avatar-upload" *ngIf="issessionHeaderVisible">
+              <div class="avatar-edit" style="cursor: pointer">
+                <input
+                  type="file"
+                  id="imageUpload"
+                  accept=".png, .jpg, .jpeg"
+                  #fileInput
+                  (change)="onFileChanged($event)"
+                  style="cursor: pointer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center" style="cursor: pointer">
+          <button
+            class="mt-3"
+            *ngIf="isButtonVisible"
+            type="button"
+            (click)="update(this.pagename)"
+          >
+            <b>{{ "Update" | translate }}</b>
+          </button>
+        </div>
+        <!--  -->
+        <br />
+        <div class="container">
+          <input
+            type="page_name"
+            name="page_name"
+            class="form-control pt-2"
+            *ngIf="isfooterButtonVisible"
+            placeholder=""
+            [(ngModel)]="footer.page_name"
+          />
+        </div>
+      </div>
+      <div class="text-center">
+        <button
+          class="mt-3"
+          *ngIf="isfooterButtonVisible"
+          type="button"
+          (click)="updatefooter(this.pageid)"
+        >
+          <b>{{ "Update" | translate }}</b>
+        </button>
+      </div>
+    </div>
+    <div class="col" *ngIf="slider">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="p-4, pb-0">{{"Image" | translate}}</th>
+            <th class="p-4 , pb-0">{{"ReplaceImage" | translate}}</th>
+            <th class="p-4 , pb-0">{{"Action" | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of images" style="border: 1px solid grey">
+            <td class="col-4">
+              <!-- {{ item.image }} -->
+              <img
+                [src]="item.image"
+                style="height: auto; width: 20%"
+                class="img-responsive icons-img"
+              />
+            </td>
+            <td class="col-4 p-3">
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                  <input
+                    type="file"
+                    id="imageUpload"
+                    accept=".png, .jpg, .jpeg"
+                    #fileInput
+                    (change)="onImageChanged($event, item.id)"
+                  />
+                </div>
+              </div>
+            </td>
+            <td class="col-4 p-3">
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteItem(item.id)"
+              >
+                {{ "Delete" | translate }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <h3>{{ "Add" | translate }}</h3>
+        <div class="avatar-upload pt-2">
+          <div class="avatar-edit">
+            <input
+              type="file"
+              id="imageUpload"
+              accept=".png, .jpg, .jpeg"
+              #fileInput
+              (change)="Add($event)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

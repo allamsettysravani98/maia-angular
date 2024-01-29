@@ -1,0 +1,30 @@
+.container {
+  /* padding: 2% 0%; */
+  border-radius: 0;
+  width: 85%;
+}
+
+.input-group {
+  width: 20%;
+  margin-left: 80%;
+  /* text-align: right; */
+}
+.custom-input-group .input-group {
+  box-shadow: none !important;
+}
+
+
+@media screen and (max-width: 480px) {
+  .row {
+    display: grid;
+  }
+  .container {
+    padding-top: 35%;
+  }
+}
+@media screen and (width: 768px) {
+  .container {
+    padding-top: 18%;
+    border-radius: 0;
+  }
+}

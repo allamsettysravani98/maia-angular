@@ -1,0 +1,135 @@
+<div class="card mx-auto">
+  <div class="card-header">
+    <div class="row">
+      <div
+        class="col-sm-3 p-2 mx-1"
+        style="
+          height: 75px;
+          width: 70px;
+          border: 1px solid black;
+          border-radius: 50%;
+        "
+      >
+        <img
+          class="p-2"
+          type="file"
+          [src]="profile.profile_img"
+          height="65"
+          width="55"
+          alt="Profile Image"
+        />
+      </div>
+      <div class="col-sm-9 p-2 m-3">
+        <h3 class="text-center">{{ "Profile" | translate }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <!-- <div class="row">
+      <div class=" p-4">
+        <img
+          type="file"
+          height="10%"
+          width="10%"
+          [src]="profile.profile_img"
+          alt="Profile Image"
+        />
+      </div>
+      <div>
+        <h3 class="text-center">Profile</h3>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="register"
+            name="register_no"
+            class="form-control"
+            placeholder="{{ 'RegisterNo' | translate }}"
+            [(ngModel)]="profile.register_no"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="{{ 'Email' | translate }}"
+            [(ngModel)]="profile.email"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="first_name"
+            class="form-control"
+            placeholder="{{ 'FirstName' | translate }}"
+            [(ngModel)]="profile.first_name"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="last_name"
+            class="form-control"
+            placeholder="{{ 'LastName' | translate }}"
+            [(ngModel)]="profile.last_name"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="date"
+            name="dob"
+            class="form-control"
+            placeholder="{{ 'DOB' | translate }}"
+            [(ngModel)]="profile.dob"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="country"
+            class="form-control"
+            placeholder="{{ 'Country' | translate }}"
+            [(ngModel)]="profile.country"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="avatar-upload" style="cursor: pointer">
+      <div class="avatar-edit">
+        <input
+          type="file"
+          id="imageUpload"
+          accept=".png, .jpg, .jpeg"
+          #fileInput
+          (change)="onFileChanged($event)"
+        />
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" (click)="updateprofile()">
+        <b>{{ "Update" | translate }}</b>
+      </button>
+      <h6 class="text-center">
+        <a routerLink="/changePassword">{{ "changepassword" | translate }}</a>
+      </h6>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+<div class="card was-validated mx-auto">
+  <div class="card-body">
+    <h4 class="mx-1 text-center">{{ "Registration" | translate }}</h4>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="register"
+            name="register_no"
+            class="form-control"
+            placeholder="{{ 'RegisterNo' | translate }}"
+            [(ngModel)]="registermodel.register_no"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="Email"
+            name="email"
+            class="form-control"
+            placeholder="{{ 'Email' | translate }}"
+            [(ngModel)]="registermodel.email"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="first_name"
+            class="form-control"
+            placeholder="{{ 'FirstName' | translate }}"
+            [(ngModel)]="registermodel.first_name"
+            required
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="last_name"
+            class="form-control"
+            placeholder="{{ 'LastName' | translate }}"
+            [(ngModel)]="registermodel.last_name"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="{{ 'Password' | translate }}"
+            [(ngModel)]="registermodel.password"
+            required
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="password"
+            name="confirm_password"
+            class="form-control"
+            placeholder="{{ 'confirmpw' | translate }}"
+            [(ngModel)]="registermodel.confirm_password"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="form-check-inline">
+      <!-- <label class="p-2">
+          <input type="checkbox" name="skill" [(ngModel)]="checkboxes['skill']"
+            (change)="handleskillCheckboxChange('skill')" />
+          Skill
+        </label>
+        <label class="p-2">
+          <input type="checkbox" [(ngModel)]="checkboxes['energy']" (change)="handleenergyCheckboxChange('energy')"
+            disabled />
+          Energy
+        </label>
+        <label class="p-2">
+          <input type="checkbox" [(ngModel)]="checkboxes['health']" (change)="handlehelthCheckboxChange('health')"
+            disabled />
+          Health
+        </label>
+        <label class="p-2">
+          <input type="checkbox" [(ngModel)]="checkboxes['financial']"
+            (change)="handlefinacialCheckboxChange('financial')" disabled />
+          Financial
+        </label> -->
+
+      <div *ngIf="showskillRadioOptions" class="was-validated">
+        <label class="p-2">
+          <input
+            type="radio"
+            [(ngModel)]="registermodel.user_role"
+            name="skillOption"
+            value="1"
+            required
+          />
+          {{ "School" | translate }}
+        </label>
+        <label class="p-2">
+          <input
+            type="radio"
+            [(ngModel)]="registermodel.user_role"
+            name="skillOption"
+            value="2"
+            required
+          />
+          {{ "Teacher" | translate }}
+        </label>
+        <label class="p-2">
+          <input
+            type="radio"
+            [(ngModel)]="registermodel.user_role"
+            name="skillOption"
+            value="3"
+            required
+          />
+          {{ "Student" | translate }}
+        </label>
+        <label class="p-2">
+          <input
+            type="radio"
+            [(ngModel)]="registermodel.user_role"
+            name="skillOption"
+            value="4"
+            required
+          />
+          {{ "Parent" | translate }}
+        </label>
+      </div>
+      <div *ngIf="showenergyRadioOptions">
+        <label class="p-2">
+          <input type="radio" name="EnergyOption" value="energy" />
+          {{ "Energy" | translate }}
+        </label>
+      </div>
+      <div *ngIf="showhealthRadioOptions">
+        <label class="p-2">
+          <input type="radio" name="HealthOption" value="Doctor" />
+          {{ "Doctor" | translate }}
+        </label>
+      </div>
+      <div *ngIf="showfinancialRadioOptions">
+        <label class="p-2">
+          <input type="radio" name="financialOption" value="financial" />
+          {{ "financial" | translate }}
+        </label>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" (click)="register()">
+        <b>{{ "Signup" | translate }}</b>
+      </button>
+      <h6 class="text-center p-3">
+        {{ "Alreadyhaveac" | translate }}
+        <a routerLink="/login">{{ "Login" | translate }}.</a>
+      </h6>
+    </div>
+  </div>
+</div>

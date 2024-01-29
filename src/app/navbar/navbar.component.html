@@ -1,0 +1,83 @@
+<!-- Header -->
+<div class="head fixed-top">
+  <nav class="navbar navbar-expand-md">
+    <div class="container align-items-end">
+      <div class="col-sm-3">
+        <a class="navbar-brand" href="#"
+          ><img
+            id="header-img"
+            src="assets/image/Logo.png"
+            class="img-responsive gif-imgs"
+            alt=""
+        /></a>
+      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse align-items-end" id="navbarScroll">
+        <div class="col pt-4" id="header-a">
+          <a href="#" routerLink="/about-maia-x">About Maia X</a>
+          <br />
+          <a href="#" routerLink="/aboutSolid">About Solid</a>
+          <br />
+          <a href="#" routerLink="/news">News</a>
+          <br />
+          <a href="#" routerLink="/blog">Blog</a>
+          <br />
+          <a href="#" routerLink="/faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="strip">
+    <div class="container align-items-end">
+      <div class="strip-inside">
+        <div class="col-sm-4 pt-2 p-2">
+          <nav>
+            <a routerLink="/home">Home</a>
+            <span> / </span>
+            <ng-container
+              *ngFor="
+                let breadcrumb of breadcrumbService.breadcrumbs;
+                let last = last
+              "
+            >
+              <a [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+              <span *ngIf="!last"> / </span>
+            </ng-container>
+          </nav>
+        </div>
+        <div class="col-sm-4 text-center pt-2">
+          <input type="text" class="search" placeholder=" Search" name="text" />
+        </div>
+        <div class="col-sm-1 text-center pt-2">
+          <a class="text-left" routerLink="" (click)="dashboard()"
+            ><b>{{ _loginservice.dashboard }}</b></a
+          >
+        </div>
+        <div class="col pt-2" id="login_register">
+          <a
+            ><strong>{{ _loginservice.userName }}</strong></a
+          >
+          <a routerLink="" (click)="btn(_loginservice.loginbutton)"
+            ><strong>{{ _loginservice.loginbutton }}</strong></a
+          >
+          <a class="text-left" routerLink="/register"
+            ><b>{{ _loginservice.registerbutton }}</b></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

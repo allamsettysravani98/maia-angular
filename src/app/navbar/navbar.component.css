@@ -1,0 +1,104 @@
+.navbar-toggler {
+  margin-bottom: 3%;
+}
+
+.navbar {
+  padding-bottom: 0px;
+  background: white;
+}
+
+#header-img {
+  margin-left: 1%;
+  width: 85%;
+}
+
+#header-a {
+  padding-right: 1%;
+  padding-bottom: 2%;
+  text-align: right;
+}
+
+#login_register {
+  padding-right: 1%;
+  padding-bottom: 2%;
+  text-align: right;
+}
+
+.strip {
+  width: 100%;
+  overflow: hidden;
+  height: 40px;
+  background: lightgray;
+}
+
+.strip-inside {
+  display: flex;
+}
+
+.search {
+  width: 80%;
+  height: 25px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* media */
+@media screen and (max-width: 480px) {
+  #login_register {
+    font-size: 11px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  #header-img {
+    width: 150px;
+  }
+
+  #header-a {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+
+  a {
+    margin: 10px;
+    text-decoration: none;
+  }
+}
+
+@media screen and (width: 768px) {
+  #login_register {
+    font-size: 13px;
+  }
+}
+@media screen and (width: 1024px) {
+  #login_register {
+    font-size: 12px;
+  }
+}
+@media screen and (width: 320px) {
+  #login_register {
+    margin-top: 2%;
+    font-size: 6px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .col-sm-6 {
+    padding-left: 11%;
+    flex: 0 0 auto;
+    width: 42%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .col-sm-6 {
+    padding-left: 16%;
+    flex: 0 0 auto;
+    width: 65%;
+  }
+}

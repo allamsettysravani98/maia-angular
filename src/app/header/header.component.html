@@ -1,0 +1,189 @@
+<!-- <div class="container text-center">
+  <div class="row">
+    <div class="col-5">
+      <a class="navbar" href="#"
+        ><img
+          id="header-img"
+          src="assets/image/Logo.png"
+          class="img-responsive gif-imgs"
+          alt=""
+      /></a>
+    </div>
+    <div class="col-md-auto mt-5 navbar-expand-sm">
+      <h6>About Maia-x</h6>
+    </div>
+    <div class="col-md-auto mt-5">
+      <h6>About Solid</h6>
+    </div>
+    <div class="col-md-auto mt-5">
+      <h6>News</h6>
+    </div>
+    <div class="col-md-auto mt-5">
+      <h6>Blog</h6>
+    </div>
+    <div class="col-md-auto mt-5">
+      <h6>FAQ</h6>
+    </div>
+    <div class="col-md-auto mt-5">
+      <h6>News Blog</h6>
+    </div>
+    <div class="col-md-auto mt-5"><h6>Login</h6></div>
+    <div class="col-md-auto mt-5">
+      <button type="button" class="btn btn-primary"><h5>Register</h5></button>
+    </div>
+  </div>
+</div> -->
+
+<!-- Header -->
+<div class="head">
+  <nav class="navbar navbar-expand-md fixed-top" style="height: 15vh">
+    <div class="container align-items-end" id="resp">
+      <div class="col-5 col-sm-3">
+        <a class="navbar" href="#" style="background: transparent"
+          ><img
+            id="header-img"
+            src="assets/image/Logo.png"
+            class="img-responsive gif-imgs"
+            alt=""
+        /></a>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse align-items-end"
+        id="navbarScroll"
+        style="justify-content: end"
+      >
+        <div class="col" id="header-a">
+          <div class="dropdown">
+            <button class="dropbtn rounded-pill">{{ this.language }}</button>
+            <div class="dropdown-content">
+              <a (click)="testLanguage('en', 'English')"> English</a>
+              <a (click)="testLanguage('nl', 'German')"> German </a>
+              <a (click)="testLanguage('fr', 'French ')"> French </a>
+              <a (click)="testLanguage('de', 'Dutch ')"> Dutch</a>
+            </div>
+          </div>
+          <!-- <h1>{{ 'head' | translate }}</h1>
+          <button (click)="switchLanguage()">Switch Language</button> -->
+          <a href="#" class="rep" routerLink="/about-maia-x">{{
+            "Aboutmaiax" | translate
+          }}</a>
+          <br />
+          <a href="#" class="rep" routerLink="/aboutSolid">{{
+            "AboutSolid" | translate
+          }}</a>
+          <br />
+          <a href="#" class="rep" routerLink="/news">{{
+            "News" | translate
+          }}</a>
+          <br />
+          <a href="#" class="rep" routerLink="/blog">{{
+            "Blog" | translate
+          }}</a>
+          <br />
+          <a href="#" class="rep" routerLink="/faq">{{ "FAQ" | translate }}</a>
+          <br />
+          <!-- <a class="rep pt-1">
+            <label for="language"></label>
+            <select id="language" (change)="switchLanguage()">
+              <option value="en">En</option>
+              <option value="nl">Nl</option>
+              <option value="fr">Fr</option>
+              <option value="de">De</option>
+               Add more options for other languages as needed -->
+          <!-- </select>
+          </a> -->
+
+          <a
+            href="#"
+            class="rep"
+            routerLink="/login"
+            *ngIf="!_loginservice.show"
+            >{{ "Login" | translate }}</a
+          >
+          <button
+            type="button"
+            class="btn btn-primary pt-2"
+            *ngIf="!_loginservice.show"
+          >
+            <a href="#" class="" routerLink="/register" style="color: white">{{
+              "Register" | translate
+            }}</a>
+          </button>
+          <div
+            class="profile-icon"
+            (click)="toggleDropdown()"
+            *ngIf="_loginservice.show"
+          >
+            <!-- Display your profile icon here -->
+            <img
+              id="userhead-img"
+              src="assets/image/userhead.png"
+              class="profileimg-responsive gif-imgs pl-2"
+              alt=""
+              style="cursor: pointer"
+            />
+
+            <!-- Dropdown menu -->
+            <div *ngIf="showDropdown" class="dropdown-menu">
+              <ul>
+                <li>
+                  <img
+                    id="userheadview-img"
+                    src="assets/image/edit-info.png"
+                    class="profileimgdrop-responsive gif-imgs pl-2"
+                    alt=""
+                    style="cursor: pointer"
+                  /><a routerLink="profile">{{ "ViewProfile" | translate }}</a>
+                </li>
+                <li>
+                  <img
+                    id="userheaddash-img"
+                    src="assets/image/dashbord.png"
+                    class="profileimgdrop-responsive gif-imgs pl-2"
+                    alt=""
+                    style="cursor: pointer"
+                  /><a (click)="dashboard()">{{ "Dashboard" | translate }}</a>
+                </li>
+                <li>
+                  <img
+                    id="userheadlogout-img"
+                    src="assets/image/logout.png"
+                    class="profileimgdrop-responsive gif-imgs pl-2"
+                    alt=""
+                    style="cursor: pointer"
+                  /><a (click)="logout()">{{ "Logout" | translate }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- <a
+            ><img
+              id="userhead-img"
+              src="assets/image/userhead.png"
+              class="profileimg-responsive gif-imgs"
+              alt=""
+              style="cursor: pointer"
+          /></a> -->
+
+          <!-- <div class="">
+            <button type="button" class="btn btn-primary">
+              <h5>Register</h5>
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

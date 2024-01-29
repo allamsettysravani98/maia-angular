@@ -1,0 +1,20 @@
+.container {
+  padding: 2% 0%;
+  border-radius: 0;
+  width: 83%;
+}
+
+@media screen and (max-width: 480px) {
+  .row {
+    display: grid;
+  }
+  .container {
+    padding-top: 35%;
+  }
+}
+@media screen and (width: 768px) {
+  .container {
+    padding-top: 18%;
+    border-radius: 0;
+  }
+}

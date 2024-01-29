@@ -1,0 +1,30 @@
+.header {
+  height: 25vh;
+}
+.body {
+  margin-top: 15%;
+  overflow: auto;
+}
+.footer {
+  background: white;
+  height: 15%;
+}
+/* .bgimage {
+  background-image: url("src/assets/image/bg.jpg");
+  width: auto;
+  height: auto;
+  background-repeat: no-repeat;
+} */
+
+.bdy {
+  margin-top: 8%;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    height: 5vh;
+  }
+  .bdy {
+    margin-top: 35%;
+  }
+}

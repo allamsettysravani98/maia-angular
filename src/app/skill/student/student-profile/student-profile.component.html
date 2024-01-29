@@ -1,0 +1,85 @@
+<div class="card mx-auto">
+  <div class="card-body">
+    <h3 class="mx-1 text-center">Profile</h3>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="register"
+            name="register_no"
+            class="form-control"
+            placeholder="Enter Register No"
+            [(ngModel)]="profile.register_no"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            [(ngModel)]="profile.email"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="first_name"
+            class="form-control"
+            placeholder="FirstName"
+            [(ngModel)]="profile.first_name"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="last_name"
+            class="form-control"
+            placeholder="Last Name"
+            [(ngModel)]="profile.last_name"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="dob"
+            class="form-control"
+            placeholder="DOB"
+            [(ngModel)]="profile.dob"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form">
+          <input
+            type="text"
+            name="country"
+            class="form-control"
+            placeholder="Country"
+            [(ngModel)]="profile.country"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="button" (click)="updateprofile()">
+        <b>Update</b>
+      </button>
+      <h6 class="text-center">
+        <a routerLink="/changePassword">change password</a>
+      </h6>
+    </div>
+  </div>
+</div>

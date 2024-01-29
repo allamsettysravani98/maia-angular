@@ -1,0 +1,38 @@
+.card{
+    height: 85%;
+    min-width:70%;
+    margin: 10px;
+    border-radius: 0px;
+}
+.half{
+height: 60%;
+}
+.half-head{
+    height: 20%;
+    }
+#img{
+    object-fit:contain;
+    border-radius: 0px;
+}
+.card-text{
+    text-align:justify;
+}
+/*  */
+@media screen and (min-width: 760px) and (max-width: 1030px) {
+    .container{
+        margin-top:10%;
+        margin-bottom: 15%;
+        overflow: auto;
+    }
+    .card{
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container{
+        margin-top:30%;
+        margin-bottom: 15%;
+        overflow: auto;
+    }
+}

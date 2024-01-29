@@ -1,0 +1,15 @@
+@media screen and (min-width: 760px) and (max-width: 1030px) {
+  .container {
+    margin-top: 12vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin-top: 15vh;
+  }
+}
+
+.urlToImage {
+  display: none;
+}
