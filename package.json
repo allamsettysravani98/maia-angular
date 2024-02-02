@@ -40,6 +40,7 @@
     "hyphenopoly": "^5.1.0",
     "jquery": "^3.7.1",
     "ng-dynamic-breadcrumb": "^8.0.0",
+    "ngx-bootstrap": "^12.0.0",
     "ngx-smart-modal": "^14.0.2",
     "ngx-toastr": "^17.0.2",
     "node-cmd": "^5.0.0",

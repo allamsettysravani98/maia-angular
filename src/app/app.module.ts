@@ -48,6 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslationService } from './service/translation.service';
+import { TabsModule} from 'ngx-bootstrap/tabs'; 
 // import { TranslationService } from './translation.service';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -98,6 +99,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ReactiveFormsModule,
     AdminModule,
     BrowserAnimationsModule,
+    TabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

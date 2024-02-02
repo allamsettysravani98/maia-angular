@@ -14,13 +14,35 @@ export class HeaderComponent {
   user_role: any;
   username: any;
   language: any;
+  lang: any;
   constructor(
     private router: Router,
     public _loginservice: LoginService,
     private translateService: TranslateService
   ) {
-    translateService.setDefaultLang('en');
-    this.language = 'English';
+    if (sessionStorage.getItem('sessionlang') != null) {
+      this.lang = sessionStorage.getItem('sessionlang');
+      if (this.lang == 'en') {
+        translateService.setDefaultLang(this.lang);
+        this.language = 'English';
+      }
+      if (this.lang == 'fr') {
+        translateService.setDefaultLang(this.lang);
+        this.language = 'French';
+      }
+      if (this.lang == 'de') {
+        translateService.setDefaultLang(this.lang);
+        this.language = 'German';
+      }
+      if (this.lang == 'nl') {
+        translateService.setDefaultLang(this.lang);
+        this.language = 'Dutch';
+      }
+    } else {
+      translateService.setDefaultLang('en');
+      sessionStorage.setItem('sessionlang', 'en');
+      this.language = 'English';
+    }
   }
 
   switchLanguage(): void {
@@ -31,8 +53,10 @@ export class HeaderComponent {
   }
   testLanguage(lang: any, lang_title: any) {
     console.log(lang);
+    sessionStorage.setItem('sessionlang', lang);
     this.translateService.use(lang);
     this.language = lang_title;
+    window.location.reload();
   }
 
   toggleDropdown() {

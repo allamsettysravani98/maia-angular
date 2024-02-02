@@ -36,10 +36,33 @@
   </div> -->
 <!-- </div> -->
 <div class="container">
+  <!-- <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">English</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">German</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">French</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+        >Dutch</a
+      >
+    </li>
+  </ul> -->
+  <!-- <div class="languages">
+    <h5 label="English" value="en">English</h5>
+    <h5 label="French" value="fr">French</h5>
+    <h5 label="German" value="de">German</h5>
+    <h5 label="Dutch" value="nl">Dutch</h5>
+  </div> -->
+
   <div class="row">
     <div class="col-sm-2 mx-auto">
       <div class="text-left p-2" style="cursor: pointer">
-        <h5 (click)="getaboutmaia()">
+        <h5 (click)="getaboutmaia(this.lang)">
           <a>{{ "Aboutmaiax" | translate }}</a>
         </h5>
       </div>
@@ -144,112 +167,421 @@
       <!--  -->
     </div>
     <div class="col" *ngIf="card" style="margin-bottom: 10%">
-      <div class="container">
-        <div class="container">
-          <div *ngIf="issessionHeaderVisible">
-            <h1 class="mb-2">{{ "Heading" | translate }}</h1>
-            <input
-              type="session_header"
-              name="session_header"
-              class="form-control mb-5"
-              *ngIf="issessionHeaderVisible"
-              placeholder=""
-              [(ngModel)]="session.heading"
-            />
-          </div>
-          <div *ngIf="issessionHeader1Visible">
-            <h1 class="mb-2">{{ "Heading" | translate }}</h1>
-            <input
-              type="session_header"
-              name="session_header"
-              class="form-control mb-5"
-              placeholder=""
-              [(ngModel)]="landingsession2.heading"
-            />
-            <h1 class="mb-2">{{ "Heading-1" | translate }}</h1>
-            <input
-              type="session_header"
-              name="session_header"
-              class="form-control mb-5"
-              placeholder=""
-              [(ngModel)]="landingsession2.heading2"
-            />
-          </div>
-          <div class="text">
-            <angular-editor
-              [placeholder]="'Enter text here...'"
-              [(ngModel)]="htmlContent"
-            ></angular-editor>
-          </div>
-          <div class="row" style="display: flex">
-            <img
-              id=""
-              *ngIf="issessionHeaderVisible"
-              [src]="session.image"
-              style="
-                height: auto;
-                width: 25%;
-                margin-top: 10px;
-                margin-bottom: 10px;
-              "
-              class="img-responsive icons-img"
-              alt=""
-            />
-            <div class="avatar-upload" *ngIf="issessionHeaderVisible">
-              <div class="avatar-edit" style="cursor: pointer">
+      <div id="gfg">
+        <tabset>
+          <tab heading="En">
+            <div class="container">
+              <div class="container">
+                <div *ngIf="issessionHeaderVisible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    *ngIf="issessionHeaderVisible"
+                    placeholder=""
+                    [(ngModel)]="session.heading"
+                  />
+                </div>
+                <div *ngIf="issessionHeader1Visible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading"
+                  />
+                  <h1 class="mb-2">{{ "Heading-1" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading2"
+                  />
+                </div>
+                <div class="text">
+                  <angular-editor
+                    [placeholder]="'Enter text here...'"
+                    [(ngModel)]="htmlContent"
+                  ></angular-editor>
+                </div>
+                <div class="row" style="display: flex">
+                  <img
+                    id=""
+                    *ngIf="issessionHeaderVisible"
+                    [src]="session.image"
+                    style="
+                      height: auto;
+                      width: 25%;
+                      margin-top: 10px;
+                      margin-bottom: 10px;
+                    "
+                    class="img-responsive icons-img"
+                    alt=""
+                  />
+                  <div class="avatar-upload" *ngIf="issessionHeaderVisible">
+                    <div class="avatar-edit" style="cursor: pointer">
+                      <input
+                        type="file"
+                        id="imageUpload"
+                        accept=".png, .jpg, .jpeg"
+                        #fileInput
+                        (change)="onFileChanged($event)"
+                        style="cursor: pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center" style="cursor: pointer">
+                <button
+                  class="mt-3"
+                  *ngIf="isButtonVisible"
+                  type="button"
+                  (click)="update(this.pagename)"
+                >
+                  <b>{{ "Update" | translate }}</b>
+                </button>
+              </div>
+              <!--  -->
+              <br />
+              <div class="container">
                 <input
-                  type="file"
-                  id="imageUpload"
-                  accept=".png, .jpg, .jpeg"
-                  #fileInput
-                  (change)="onFileChanged($event)"
-                  style="cursor: pointer"
+                  type="page_name"
+                  name="page_name"
+                  class="form-control pt-2"
+                  *ngIf="isfooterButtonVisible"
+                  placeholder=""
+                  [(ngModel)]="footer.page_name"
                 />
               </div>
             </div>
-          </div>
-        </div>
-        <div class="text-center" style="cursor: pointer">
-          <button
-            class="mt-3"
-            *ngIf="isButtonVisible"
-            type="button"
-            (click)="update(this.pagename)"
+            <div class="text-center">
+              <button
+                class="mt-3"
+                *ngIf="isfooterButtonVisible"
+                type="button"
+                (click)="updatefooter(this.pageid)"
+              >
+                <b>{{ "Update" | translate }}</b>
+              </button>
+            </div></tab
           >
-            <b>{{ "Update" | translate }}</b>
-          </button>
-        </div>
-        <!--  -->
-        <br />
-        <div class="container">
-          <input
-            type="page_name"
-            name="page_name"
-            class="form-control pt-2"
-            *ngIf="isfooterButtonVisible"
-            placeholder=""
-            [(ngModel)]="footer.page_name"
-          />
-        </div>
-      </div>
-      <div class="text-center">
-        <button
-          class="mt-3"
-          *ngIf="isfooterButtonVisible"
-          type="button"
-          (click)="updatefooter(this.pageid)"
-        >
-          <b>{{ "Update" | translate }}</b>
-        </button>
+          <!--  -->
+          <tab heading="De">
+            <div class="container">
+              <div class="container">
+                <div *ngIf="issessionHeaderVisible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    *ngIf="issessionHeaderVisible"
+                    placeholder=""
+                    [(ngModel)]="session.heading"
+                  />
+                </div>
+                <div *ngIf="issessionHeader1Visible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading"
+                  />
+                  <h1 class="mb-2">{{ "Heading-1" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading2"
+                  />
+                </div>
+                <div class="text">
+                  <angular-editor
+                    [placeholder]="'Enter text here...'"
+                    [(ngModel)]="htmlContentde"
+                  ></angular-editor>
+                </div>
+                <div class="row" style="display: flex">
+                  <img
+                    id=""
+                    *ngIf="issessionHeaderVisible"
+                    [src]="session.image"
+                    style="
+                      height: auto;
+                      width: 25%;
+                      margin-top: 10px;
+                      margin-bottom: 10px;
+                    "
+                    class="img-responsive icons-img"
+                    alt=""
+                  />
+                  <div class="avatar-upload" *ngIf="issessionHeaderVisible">
+                    <div class="avatar-edit" style="cursor: pointer">
+                      <input
+                        type="file"
+                        id="imageUpload"
+                        accept=".png, .jpg, .jpeg"
+                        #fileInput
+                        (change)="onFileChanged($event)"
+                        style="cursor: pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center" style="cursor: pointer">
+                <button
+                  class="mt-3"
+                  *ngIf="isButtonVisible"
+                  type="button"
+                  (click)="update(this.pagename)"
+                >
+                  <b>{{ "Update" | translate }}</b>
+                </button>
+              </div>
+              <!--  -->
+              <br />
+              <div class="container">
+                <input
+                  type="page_name"
+                  name="page_name"
+                  class="form-control pt-2"
+                  *ngIf="isfooterButtonVisible"
+                  placeholder=""
+                  [(ngModel)]="footer.page_name"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                class="mt-3"
+                *ngIf="isfooterButtonVisible"
+                type="button"
+                (click)="updatefooter(this.pageid)"
+              >
+                <b>{{ "Update" | translate }}</b>
+              </button>
+            </div></tab
+          >
+          <!--  -->
+          <tab heading="Fr">
+            <div class="container">
+              <div class="container">
+                <div *ngIf="issessionHeaderVisible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    *ngIf="issessionHeaderVisible"
+                    placeholder=""
+                    [(ngModel)]="session.heading"
+                  />
+                </div>
+                <div *ngIf="issessionHeader1Visible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading"
+                  />
+                  <h1 class="mb-2">{{ "Heading-1" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading2"
+                  />
+                </div>
+                <div class="text">
+                  <angular-editor
+                    [placeholder]="'Enter text here...'"
+                    [(ngModel)]="htmlContentfr"
+                  ></angular-editor>
+                </div>
+                <div class="row" style="display: flex">
+                  <img
+                    id=""
+                    *ngIf="issessionHeaderVisible"
+                    [src]="session.image"
+                    style="
+                      height: auto;
+                      width: 25%;
+                      margin-top: 10px;
+                      margin-bottom: 10px;
+                    "
+                    class="img-responsive icons-img"
+                    alt=""
+                  />
+                  <div class="avatar-upload" *ngIf="issessionHeaderVisible">
+                    <div class="avatar-edit" style="cursor: pointer">
+                      <input
+                        type="file"
+                        id="imageUpload"
+                        accept=".png, .jpg, .jpeg"
+                        #fileInput
+                        (change)="onFileChanged($event)"
+                        style="cursor: pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center" style="cursor: pointer">
+                <button
+                  class="mt-3"
+                  *ngIf="isButtonVisible"
+                  type="button"
+                  (click)="update(this.pagename)"
+                >
+                  <b>{{ "Update" | translate }}</b>
+                </button>
+              </div>
+              <!--  -->
+              <br />
+              <div class="container">
+                <input
+                  type="page_name"
+                  name="page_name"
+                  class="form-control pt-2"
+                  *ngIf="isfooterButtonVisible"
+                  placeholder=""
+                  [(ngModel)]="footer.page_name"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                class="mt-3"
+                *ngIf="isfooterButtonVisible"
+                type="button"
+                (click)="updatefooter(this.pageid)"
+              >
+                <b>{{ "Update" | translate }}</b>
+              </button>
+            </div></tab
+          >
+          <!--  -->
+          <tab heading="Nl">
+            <div class="container">
+              <div class="container">
+                <div *ngIf="issessionHeaderVisible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    *ngIf="issessionHeaderVisible"
+                    placeholder=""
+                    [(ngModel)]="session.heading"
+                  />
+                </div>
+                <div *ngIf="issessionHeader1Visible">
+                  <h1 class="mb-2">{{ "Heading" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading"
+                  />
+                  <h1 class="mb-2">{{ "Heading-1" | translate }}</h1>
+                  <input
+                    type="session_header"
+                    name="session_header"
+                    class="form-control mb-5"
+                    placeholder=""
+                    [(ngModel)]="landingsession2.heading2"
+                  />
+                </div>
+                <div class="text">
+                  <angular-editor
+                    [placeholder]="'Enter text here...'"
+                    [(ngModel)]="htmlContentnl"
+                  ></angular-editor>
+                </div>
+                <div class="row" style="display: flex">
+                  <img
+                    id=""
+                    *ngIf="issessionHeaderVisible"
+                    [src]="session.image"
+                    style="
+                      height: auto;
+                      width: 25%;
+                      margin-top: 10px;
+                      margin-bottom: 10px;
+                    "
+                    class="img-responsive icons-img"
+                    alt=""
+                  />
+                  <div class="avatar-upload" *ngIf="issessionHeaderVisible">
+                    <div class="avatar-edit" style="cursor: pointer">
+                      <input
+                        type="file"
+                        id="imageUpload"
+                        accept=".png, .jpg, .jpeg"
+                        #fileInput
+                        (change)="onFileChanged($event)"
+                        style="cursor: pointer"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center" style="cursor: pointer">
+                <button
+                  class="mt-3"
+                  *ngIf="isButtonVisible"
+                  type="button"
+                  (click)="update(this.pagename)"
+                >
+                  <b>{{ "Update" | translate }}</b>
+                </button>
+              </div>
+              <!--  -->
+              <br />
+              <div class="container">
+                <input
+                  type="page_name"
+                  name="page_name"
+                  class="form-control pt-2"
+                  *ngIf="isfooterButtonVisible"
+                  placeholder=""
+                  [(ngModel)]="footer.page_name"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <button
+                class="mt-3"
+                *ngIf="isfooterButtonVisible"
+                type="button"
+                (click)="updatefooter(this.pageid)"
+              >
+                <b>{{ "Update" | translate }}</b>
+              </button>
+            </div>
+          </tab>
+        </tabset>
       </div>
     </div>
     <div class="col" *ngIf="slider">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th class="p-4, pb-0">{{"Image" | translate}}</th>
-            <th class="p-4 , pb-0">{{"ReplaceImage" | translate}}</th>
-            <th class="p-4 , pb-0">{{"Action" | translate}}</th>
+            <th class="p-4, pb-0">{{ "Image" | translate }}</th>
+            <th class="p-4 , pb-0">{{ "ReplaceImage" | translate }}</th>
+            <th class="p-4 , pb-0">{{ "Action" | translate }}</th>
           </tr>
         </thead>
         <tbody>

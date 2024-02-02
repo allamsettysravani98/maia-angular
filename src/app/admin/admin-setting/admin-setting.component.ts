@@ -22,12 +22,16 @@ import { FooterService } from 'src/app/service/footer/footer.service';
 })
 export class AdminSettingComponent {
   sanitizedHtmlContent: SafeHtml | undefined;
+  active: boolean | undefined;
 
   maia: AboutMaia = new AboutMaia();
 
   aboutmaia: any;
 
   htmlContent: any;
+  htmlContentfr: any;
+  htmlContentnl: any;
+  htmlContentde: any;
 
   isfooterButtonVisible: boolean = false;
 
@@ -56,6 +60,11 @@ export class AdminSettingComponent {
   images: any = [];
   slider_image: SliderImages = new SliderImages();
   sliderimages: any;
+
+  lang: any;
+  function_name: any;
+  items: string[] = ['en', 'nl', 'de', 'fr'];
+
   constructor(
     private aboutmaiaservice: AboutmaiaService,
 
@@ -67,6 +76,7 @@ export class AdminSettingComponent {
   ) {}
 
   ngOnInit() {
+    this.lang = 'en';
     this.footer.action = 'footer_links';
 
     this.footerservice.getlist(this.footer).subscribe((response) => {
@@ -74,36 +84,67 @@ export class AdminSettingComponent {
     });
   }
 
-  getaboutmaia() {
-    this.maia.action = 'cms_list';
-    this.maia.page_id = 1;
-    this.aboutmaiaservice.getdata(this.maia).subscribe((response) => {
-      this.htmlContent = response.page_content[0].page_content;
-      this.aboutmaia = response.page_content[0];
-      this.pagename = this.aboutmaia.page_name;
-      this.isButtonVisible = true;
-      this.isfooterButtonVisible = false;
-      this.issessionHeaderVisible = false;
-      this.issessionHeader1Visible = false;
-      this.card = true;
-      this.slider = false;
-    });
+  getaboutmaia(lang: any) {
+    // console.log(lang);
+    // this.lang = lang;
+    for (let i = 0; i < this.items.length; i++) {
+      console.log(this.items[i]);
+      this.function_name = 'getaboutmaia';
+      this.maia.action = 'cms_list';
+      this.maia.page_id = 1;
+      this.maia.lan = this.items[i];
+      this.aboutmaiaservice.getdata(this.maia).subscribe((response) => {
+        if (response.page_content[0].lan == 'en') {
+          this.htmlContent = response.page_content[0].page_content;
+        } else if (response.page_content[0].lan == 'fr') {
+          this.htmlContentfr = response.page_content[0].page_content;
+        } else if (response.page_content[0].lan == 'nl') {
+          this.htmlContentnl = response.page_content[0].page_content;
+        } else if (response.page_content[0].lan == 'de') {
+          this.htmlContentde = response.page_content[0].page_content;
+        }
+        this.aboutmaia = response.page_content[0];
+        this.pagename = this.aboutmaia.page_name;
+        this.isButtonVisible = true;
+        this.isfooterButtonVisible = false;
+        this.issessionHeaderVisible = false;
+        this.issessionHeader1Visible = false;
+        this.card = true;
+        this.slider = false;
+      });
+    }
   }
 
   getaboutsolid() {
-    this.maia.action = 'cms_list';
-    this.maia.page_id = 2;
-    this.aboutmaiaservice.getdata(this.maia).subscribe((response) => {
-      this.htmlContent = response.page_content[0].page_content;
-      this.aboutmaia = response.page_content[0];
-      this.pagename = this.aboutmaia.page_name;
-      this.isButtonVisible = true;
-      this.isfooterButtonVisible = false;
-      this.issessionHeaderVisible = false;
-      this.issessionHeader1Visible = false;
-      this.card = true;
-      this.slider = false;
-    });
+    // console.log(lang);
+    // this.lang = lang;
+    for (let i = 0; i < this.items.length; i++) {
+      console.log(this.items[i]);
+
+      this.function_name = 'getaboutsolid';
+      this.maia.action = 'cms_list';
+      this.maia.page_id = 2;
+      this.maia.lan = this.items[i];
+      this.aboutmaiaservice.getdata(this.maia).subscribe((response) => {
+        if (response.page_content[0].lan == 'en') {
+          this.htmlContent = response.page_content[0].page_content;
+        } else if (response.page_content[0].lan == 'fr') {
+          this.htmlContentfr = response.page_content[0].page_content;
+        } else if (response.page_content[0].lan == 'nl') {
+          this.htmlContentnl = response.page_content[0].page_content;
+        } else if (response.page_content[0].lan == 'de') {
+          this.htmlContentde = response.page_content[0].page_content;
+        }
+        this.aboutmaia = response.page_content[0];
+        this.pagename = this.aboutmaia.page_name;
+        this.isButtonVisible = true;
+        this.isfooterButtonVisible = false;
+        this.issessionHeaderVisible = false;
+        this.issessionHeader1Visible = false;
+        this.card = true;
+        this.slider = false;
+      });
+    }
   }
 
   getfootercontent(page_id: any) {
@@ -211,24 +252,35 @@ export class AdminSettingComponent {
 
   update(pagename: any) {
     console.log(pagename);
+    console.log(this.lang);
     if (pagename == 'About Maia') {
       this.maia.action = 'cms_update';
       this.maia.page_id = 1;
       this.maia.page_content = this.htmlContent;
+      this.maia.page_content_fr = this.htmlContentfr;
+      this.maia.page_content_nl = this.htmlContentnl;
+      this.maia.page_content_de = this.htmlContentde;
       this.aboutmaiaservice.postdata(this.maia).subscribe((response) => {
         this.htmlContent = '';
+        this.htmlContentde = '';
+        this.htmlContentfr = '';
+        this.htmlContentnl = '';
         this.isButtonVisible = false;
         this.isfooterButtonVisible = false;
         this.issessionHeaderVisible = false;
         this.issessionHeader1Visible = false;
         this.card = true;
         this.slider = false;
-        this.getaboutmaia();
+        this.getaboutmaia(this.lang);
       });
     } else if (pagename == 'About Solid') {
       this.maia.action = 'cms_update';
       this.maia.page_id = 2;
+      this.maia.lan = this.lang;
       this.maia.page_content = this.htmlContent;
+      this.maia.page_content_fr = this.htmlContentfr;
+      this.maia.page_content_nl = this.htmlContentnl;
+      this.maia.page_content_de = this.htmlContentde;
       this.aboutmaiaservice.postdata(this.maia).subscribe((response) => {
         this.htmlContent = '';
         this.isButtonVisible = false;
@@ -493,8 +545,8 @@ export class AdminSettingComponent {
       .deletesliderimages(this.slider_image)
       .subscribe((response) => {
         if (response.response[0].type == 'success') {
-        // this.images = response.banner_image_list;
-        this.getsliderimages();
+          // this.images = response.banner_image_list;
+          this.getsliderimages();
         }
         this.card = false;
         this.slider = true;

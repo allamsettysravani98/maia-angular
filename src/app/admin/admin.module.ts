@@ -11,6 +11,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslationService } from '../service/translation.service';
+import { TabsModule} from 'ngx-bootstrap/tabs'; 
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { RouterModule } from '@angular/router';
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ReactiveFormsModule,
     AngularEditorModule,
+    TabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

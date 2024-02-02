@@ -13,6 +13,7 @@ export class AboutMaiaXComponent {
   maia: AboutMaia = new AboutMaia();
   aboutmaia = [];
   htmlContent = {};
+  lang: any;
 
   constructor(
     private aboutmaiaservice: AboutmaiaService,
@@ -20,8 +21,10 @@ export class AboutMaiaXComponent {
   ) {}
 
   ngOnInit() {
+    this.lang = sessionStorage.getItem("sessionlang");
     this.maia.action = 'cms_list';
     this.maia.page_id = 1;
+    this.maia.lan = this.lang;
     this.aboutmaiaservice.getdata(this.maia).subscribe((response) => {
       this.htmlContent = response.page_content[0].page_content;
     });
