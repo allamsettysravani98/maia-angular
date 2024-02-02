@@ -164,90 +164,176 @@ export class AdminSettingComponent {
   }
   //
   getlanding_header() {
-    this.session.action = 'landing_page_cms_list_1';
-    this.session.id = 1;
-    this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
-      console.log(response);
-      this.session = response.content[0];
-      this.htmlContent = response.content[0].description;
-      this.isfooterButtonVisible = false;
-      this.isButtonVisible = true;
-      this.pagename = 'landing_header';
-      this.issessionHeaderVisible = true;
-      this.issessionHeader1Visible = false;
-      this.card = true;
-      this.slider = false;
-    });
-  }
-
-  getlandindcard(id: any) {
-    this.session.action = 'landing_page_cms_list_1';
-    this.session.id = id;
-    this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
-      console.log(response);
-      this.session = response.content[0];
-      this.htmlContent = response.content[0].description;
-      this.isfooterButtonVisible = false;
-      this.isButtonVisible = true;
-      this.pagename = 'card-' + id;
-      console.log(this.pagename);
-      this.issessionHeaderVisible = true;
-      this.issessionHeader1Visible = false;
-      this.card = true;
-      this.slider = false;
-    });
-  }
-
-  getlandindsession2() {
-    this.landingsession2.action = 'landing_page_cms_list_2';
-    this.landingsession2.id = 2;
-    this.aboutmaiaservice
-      .getdata(this.landingsession2)
-      .subscribe((response) => {
-        this.htmlContent = response.content[0].description;
-        this.landingsession2 = response.content[0];
+    for (let i = 0; i < this.items.length; i++) {
+      this.session.action = 'landing_page_cms_list_1';
+      this.session.id = 1;
+      this.session.lan = this.items[i];
+      this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
+        console.log(response);
+        console.log(response.content[0].lan);
+        if (response.content[0].lan == 'en') {
+          console.log('in');
+          this.htmlContent = response.content[0].description;
+          this.session.heading = response.content[0].heading;
+        } else if (response.content[0].lan == 'fr') {
+          console.log('in');
+          this.htmlContentfr = response.content[0].description;
+          this.session.heading_fr = response.content[0].heading;
+        } else if (response.content[0].lan == 'nl') {
+          console.log('in');
+          this.htmlContentnl = response.content[0].description;
+          this.session.heading_nl = response.content[0].heading;
+        } else if (response.content[0].lan == 'de') {
+          console.log('in');
+          this.htmlContentde = response.content[0].description;
+          this.session.heading_de = response.content[0].heading;
+        }
+        this.session.image = response.content[0].image;
         this.isfooterButtonVisible = false;
-        this.pagename = 'landing_session2';
         this.isButtonVisible = true;
-        this.issessionHeaderVisible = false;
-        this.issessionHeader1Visible = true;
+        this.pagename = 'landing_header';
+        this.issessionHeaderVisible = true;
+        this.issessionHeader1Visible = false;
         this.card = true;
         this.slider = false;
       });
+    }
+  }
+
+  getlandindcard(id: any) {
+    for (let i = 0; i < this.items.length; i++) {
+      this.session.action = 'landing_page_cms_list_1';
+      this.session.id = id;
+      this.session.lan = this.items[i];
+      this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
+        console.log(response);
+        // this.session = response.content[0];
+        // this.htmlContent = response.content[0].description;
+        if (response.content[0].lan == 'en') {
+          this.htmlContent = response.content[0].description;
+          this.session.heading = response.content[0].heading;
+        } else if (response.content[0].lan == 'fr') {
+          this.htmlContentfr = response.content[0].description;
+          this.session.heading_fr = response.content[0].heading;
+        } else if (response.content[0].lan == 'nl') {
+          this.htmlContentnl = response.content[0].description;
+          this.session.heading_nl = response.content[0].heading;
+        } else if (response.content[0].lan == 'de') {
+          this.htmlContentde = response.content[0].description;
+          this.session.heading_de = response.content[0].heading;
+        }
+        this.session.image = response.content[0].image;
+        this.isfooterButtonVisible = false;
+        this.isButtonVisible = true;
+        this.pagename = 'card-' + id;
+        console.log(this.pagename);
+        this.issessionHeaderVisible = true;
+        this.issessionHeader1Visible = false;
+        this.card = true;
+        this.slider = false;
+      });
+    }
+  }
+
+  getlandindsession2() {
+    for (let i = 0; i < this.items.length; i++) {
+      this.landingsession2.action = 'landing_page_cms_list_2';
+      this.landingsession2.id = 2;
+      this.landingsession2.lan = this.items[i];
+      this.aboutmaiaservice
+        .getdata(this.landingsession2)
+        .subscribe((response) => {
+          if (response.content[0].lan == 'en') {
+            this.htmlContent = response.content[0].description;
+            this.landingsession2.heading = response.content[0].heading;
+            this.landingsession2.heading2 = response.content[0].heading2;
+          } else if (response.content[0].lan == 'fr') {
+            this.htmlContentfr = response.content[0].description;
+            this.landingsession2.heading_fr = response.content[0].heading;
+            this.landingsession2.heading2_fr = response.content[0].heading2;
+          } else if (response.content[0].lan == 'nl') {
+            this.htmlContentnl = response.content[0].description;
+            this.landingsession2.heading_nl = response.content[0].heading;
+            this.landingsession2.heading2_nl = response.content[0].heading2;
+          } else if (response.content[0].lan == 'de') {
+            this.htmlContentde = response.content[0].description;
+            this.landingsession2.heading_de = response.content[0].heading;
+            this.landingsession2.heading2_de = response.content[0].heading2;
+          }
+          this.session.image = response.content[0].image;
+          this.isfooterButtonVisible = false;
+          this.pagename = 'landing_session2';
+          this.isButtonVisible = true;
+          this.issessionHeaderVisible = false;
+          this.issessionHeader1Visible = true;
+          this.card = true;
+          this.slider = false;
+        });
+    }
   }
   //
   getsession1() {
-    this.session.action = 'home_page_cms_list';
-    this.session.id = 1;
-    this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
-      console.log(response);
-      this.session = response.content[0];
-      this.htmlContent = response.content[0].description;
-      this.isfooterButtonVisible = false;
-      this.isButtonVisible = true;
-      this.pagename = 'session-1';
-      this.issessionHeaderVisible = true;
-      this.issessionHeader1Visible = false;
-      this.card = true;
-      this.slider = false;
-    });
+    for (let i = 0; i < this.items.length; i++) {
+      this.session.action = 'home_page_cms_list';
+      this.session.id = 1;
+      this.session.lan = this.items[i];
+      this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
+        console.log(response);
+        if (response.content[0].lan == 'en') {
+          this.htmlContent = response.content[0].description;
+          this.session.heading = response.content[0].heading;
+        } else if (response.content[0].lan == 'fr') {
+          this.htmlContentfr = response.content[0].description;
+          this.session.heading_fr = response.content[0].heading;
+        } else if (response.content[0].lan == 'nl') {
+          this.htmlContentnl = response.content[0].description;
+          this.session.heading_nl = response.content[0].heading;
+        } else if (response.content[0].lan == 'de') {
+          this.htmlContentde = response.content[0].description;
+          this.session.heading_de = response.content[0].heading;
+        }
+        this.session.image = response.content[0].image;
+        this.isfooterButtonVisible = false;
+        this.isButtonVisible = true;
+        this.pagename = 'session-1';
+        this.issessionHeaderVisible = true;
+        this.issessionHeader1Visible = false;
+        this.card = true;
+        this.slider = false;
+      });
+    }
   }
 
   getsession2() {
-    this.session.action = 'home_page_cms_list';
-    this.session.id = 2;
-    this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
-      console.log(response);
-      this.session = response.content[0];
-      this.htmlContent = response.content[0].description;
-      this.isfooterButtonVisible = false;
-      this.isButtonVisible = true;
-      this.pagename = 'session-2';
-      this.issessionHeaderVisible = true;
-      this.issessionHeader1Visible = false;
-      this.card = true;
-      this.slider = false;
-    });
+    for (let i = 0; i < this.items.length; i++) {
+      this.session.action = 'home_page_cms_list';
+      this.session.id = 2;
+      this.session.lan = this.items[i];
+      this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
+        console.log(response);
+        if (response.content[0].lan == 'en') {
+          this.htmlContent = response.content[0].description;
+          this.session.heading = response.content[0].heading;
+        } else if (response.content[0].lan == 'fr') {
+          this.htmlContentfr = response.content[0].description;
+          this.session.heading_fr = response.content[0].heading;
+        } else if (response.content[0].lan == 'nl') {
+          this.htmlContentnl = response.content[0].description;
+          this.session.heading_nl = response.content[0].heading;
+        } else if (response.content[0].lan == 'de') {
+          this.htmlContentde = response.content[0].description;
+          this.session.heading_de = response.content[0].heading;
+        }
+        this.session.image = response.content[0].image;
+        this.isfooterButtonVisible = false;
+        this.isButtonVisible = true;
+        this.pagename = 'session-2';
+        this.issessionHeaderVisible = true;
+        this.issessionHeader1Visible = false;
+        this.card = true;
+        this.slider = false;
+      });
+    }
   }
 
   update(pagename: any) {
@@ -295,19 +381,49 @@ export class AdminSettingComponent {
       this.landingsession2.action = 'landing_page_cms_update_2';
       this.landingsession2.id = 2;
       this.landingsession2.description = this.htmlContent;
+      this.landingsession2.description_nl = this.htmlContentnl;
+      this.landingsession2.description_de = this.htmlContentde;
+      this.landingsession2.description_fr = this.htmlContentfr;
       //
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.landingsession2.action.toString());
       formData.append('id', this.landingsession2.id.toString());
       formData.append('heading', this.landingsession2.heading.toString());
+      formData.append('heading_nl', this.landingsession2.heading_nl.toString());
+      formData.append('heading_fr', this.landingsession2.heading_fr.toString());
+      formData.append('heading_de', this.landingsession2.heading_de.toString());
+      formData.append('heading2', this.landingsession2.heading2.toString());
+      formData.append(
+        'heading2_nl',
+        this.landingsession2.heading2_nl.toString()
+      );
+      formData.append(
+        'heading2_fr',
+        this.landingsession2.heading2_fr.toString()
+      );
+      formData.append(
+        'heading2_de',
+        this.landingsession2.heading2_de.toString()
+      );
       formData.append(
         'description',
         this.landingsession2.description.toString()
       );
-      formData.append('heading2', this.landingsession2.heading2);
+      formData.append(
+        'description_nl',
+        this.landingsession2.description_nl.toString()
+      );
+      formData.append(
+        'description_fr',
+        this.landingsession2.description_fr.toString()
+      );
+      formData.append(
+        'description_de',
+        this.landingsession2.description_de.toString()
+      );
 
-      this.aboutmaiaservice.postdata(formData).subscribe((response) => {
+      this.aboutmaiaservice.postdata(formData).subscribe(() => {
         this.htmlContent = '';
         this.isButtonVisible = false;
         this.isfooterButtonVisible = false;
@@ -321,12 +437,21 @@ export class AdminSettingComponent {
       this.session.action = 'home_page_cms_update';
       this.session.id = 1;
       this.session.description = this.htmlContent;
+      this.session.description_nl = this.htmlContentnl;
+      this.session.description_de = this.htmlContentde;
+      this.session.description_fr = this.htmlContentfr;
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.session.action.toString());
       formData.append('id', this.session.id.toString());
       formData.append('heading', this.session.heading.toString());
+      formData.append('heading_nl', this.session.heading_nl.toString());
+      formData.append('heading_fr', this.session.heading_fr.toString());
+      formData.append('heading_de', this.session.heading_de.toString());
       formData.append('description', this.session.description.toString());
+      formData.append('description_nl', this.session.description_nl.toString());
+      formData.append('description_fr', this.session.description_fr.toString());
+      formData.append('description_de', this.session.description_de.toString());
       formData.append('image', this.session.image);
 
       this.aboutmaiaservice.postsession(formData).subscribe((response) => {
@@ -343,12 +468,21 @@ export class AdminSettingComponent {
       this.session.action = 'home_page_cms_update';
       this.session.id = 2;
       this.session.description = this.htmlContent;
+      this.session.description_nl = this.htmlContentnl;
+      this.session.description_de = this.htmlContentde;
+      this.session.description_fr = this.htmlContentfr;
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.session.action.toString());
       formData.append('id', this.session.id.toString());
       formData.append('heading', this.session.heading.toString());
+      formData.append('heading_nl', this.session.heading_nl.toString());
+      formData.append('heading_fr', this.session.heading_fr.toString());
+      formData.append('heading_de', this.session.heading_de.toString());
       formData.append('description', this.session.description.toString());
+      formData.append('description_nl', this.session.description_nl.toString());
+      formData.append('description_fr', this.session.description_fr.toString());
+      formData.append('description_de', this.session.description_de.toString());
       formData.append('image', this.session.image);
       this.aboutmaiaservice.postsession(formData).subscribe((response) => {
         console.log(response);
@@ -365,12 +499,21 @@ export class AdminSettingComponent {
       this.session.action = 'landing_page_cms_update_1';
       this.session.id = 1;
       this.session.description = this.htmlContent;
+      this.session.description_nl = this.htmlContentnl;
+      this.session.description_de = this.htmlContentde;
+      this.session.description_fr = this.htmlContentfr;
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.session.action.toString());
       formData.append('id', this.session.id.toString());
       formData.append('heading', this.session.heading.toString());
+      formData.append('heading_nl', this.session.heading_nl.toString());
+      formData.append('heading_de', this.session.heading_de.toString());
+      formData.append('heading_fr', this.session.heading_fr.toString());
       formData.append('description', this.session.description.toString());
+      formData.append('description_nl', this.session.description_nl.toString());
+      formData.append('description_fr', this.session.description_fr.toString());
+      formData.append('description_de', this.session.description_de.toString());
       formData.append('image', this.session.image);
       this.aboutmaiaservice.postsession(formData).subscribe((response) => {
         console.log(response);
@@ -387,12 +530,21 @@ export class AdminSettingComponent {
       this.session.action = 'landing_page_cms_update_1';
       this.session.id = 3;
       this.session.description = this.htmlContent;
+      this.session.description_nl = this.htmlContentnl;
+      this.session.description_de = this.htmlContentde;
+      this.session.description_fr = this.htmlContentfr;
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.session.action.toString());
       formData.append('id', this.session.id.toString());
       formData.append('heading', this.session.heading.toString());
+      formData.append('heading_nl', this.session.heading_nl.toString());
+      formData.append('heading_de', this.session.heading_de.toString());
+      formData.append('heading_fr', this.session.heading_fr.toString());
       formData.append('description', this.session.description.toString());
+      formData.append('description_nl', this.session.description_nl.toString());
+      formData.append('description_fr', this.session.description_fr.toString());
+      formData.append('description_de', this.session.description_de.toString());
       formData.append('image', this.session.image);
       this.aboutmaiaservice.postsession(formData).subscribe((response) => {
         console.log(response);
@@ -409,12 +561,21 @@ export class AdminSettingComponent {
       this.session.action = 'landing_page_cms_update_1';
       this.session.id = 4;
       this.session.description = this.htmlContent;
+      this.session.description_nl = this.htmlContentnl;
+      this.session.description_de = this.htmlContentde;
+      this.session.description_fr = this.htmlContentfr;
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.session.action.toString());
       formData.append('id', this.session.id.toString());
       formData.append('heading', this.session.heading.toString());
+      formData.append('heading_nl', this.session.heading_nl.toString());
+      formData.append('heading_de', this.session.heading_de.toString());
+      formData.append('heading_fr', this.session.heading_fr.toString());
       formData.append('description', this.session.description.toString());
+      formData.append('description_nl', this.session.description_nl.toString());
+      formData.append('description_fr', this.session.description_fr.toString());
+      formData.append('description_de', this.session.description_de.toString());
       formData.append('image', this.session.image);
       this.aboutmaiaservice.postsession(formData).subscribe((response) => {
         console.log(response);
@@ -431,12 +592,21 @@ export class AdminSettingComponent {
       this.session.action = 'landing_page_cms_update_1';
       this.session.id = 5;
       this.session.description = this.htmlContent;
+      this.session.description_nl = this.htmlContentnl;
+      this.session.description_de = this.htmlContentde;
+      this.session.description_fr = this.htmlContentfr;
       const formData = new FormData();
       // Append number field as a string
       formData.append('action', this.session.action.toString());
       formData.append('id', this.session.id.toString());
       formData.append('heading', this.session.heading.toString());
+      formData.append('heading_nl', this.session.heading_nl.toString());
+      formData.append('heading_de', this.session.heading_de.toString());
+      formData.append('heading_fr', this.session.heading_fr.toString());
       formData.append('description', this.session.description.toString());
+      formData.append('description_nl', this.session.description_nl.toString());
+      formData.append('description_fr', this.session.description_fr.toString());
+      formData.append('description_de', this.session.description_de.toString());
       formData.append('image', this.session.image);
       this.aboutmaiaservice.postsession(formData).subscribe((response) => {
         console.log(response);

@@ -36,6 +36,7 @@ export class LandingComponent {
   htmlCard3 = {};
   htmllanding_header = {};
   htmllaningsession2 = {};
+  language: any;
 
   slider_image: SliderImages = new SliderImages();
   images: any = [];
@@ -50,6 +51,7 @@ export class LandingComponent {
   }
 
   ngOnInit() {
+    this.language = sessionStorage.getItem('sessionlang');
     this.getsession1();
     this.getsession2();
     this.getsliderimages();
@@ -64,6 +66,7 @@ export class LandingComponent {
   getlanding_header() {
     this.header.action = 'landing_page_cms_list_1';
     this.header.id = 1;
+    this.header.lan = this.language;
     this.aboutmaiaservice.getSession(this.header).subscribe((response) => {
       this.landing_header = response.content[0];
       this.htmllanding_header = response.content[0].description;
@@ -73,6 +76,7 @@ export class LandingComponent {
   getlandindcard1() {
     this.session.action = 'landing_page_cms_list_1';
     this.session.id = 3;
+    this.session.lan = this.language;
     this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
       this.card1 = response.content[0];
       this.htmlCard1 = response.content[0].description;
@@ -82,6 +86,7 @@ export class LandingComponent {
   getlandindcard2() {
     this.session.action = 'landing_page_cms_list_1';
     this.session.id = 4;
+    this.session.lan = this.language;
     this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
       this.card2 = response.content[0];
       this.htmlCard2 = response.content[0].description;
@@ -91,6 +96,7 @@ export class LandingComponent {
   getlandindcard3() {
     this.session.action = 'landing_page_cms_list_1';
     this.session.id = 5;
+    this.session.lan = this.language;
     this.aboutmaiaservice.getSession(this.session).subscribe((response) => {
       this.card3 = response.content[0];
       this.htmlCard3 = response.content[0].description;
@@ -100,6 +106,7 @@ export class LandingComponent {
   getlandindsession2() {
     this.landingsession2.action = 'landing_page_cms_list_2';
     this.landingsession2.id = 2;
+    this.landingsession2.lan = this.language;
     this.aboutmaiaservice
       .getdata(this.landingsession2)
       .subscribe((response) => {
@@ -112,7 +119,7 @@ export class LandingComponent {
     this.session1.action = 'home_page_cms_list';
 
     this.session1.id = 1;
-
+    this.session.lan = this.language;
     this.aboutmaiaservice.getSession(this.session1).subscribe((response) => {
       console.log(response);
       this.session1 = response.content[0];
@@ -124,6 +131,7 @@ export class LandingComponent {
     this.session2.action = 'home_page_cms_list';
 
     this.session2.id = 2;
+    this.session.lan = this.language;
 
     this.aboutmaiaservice.getSession(this.session2).subscribe((response) => {
       console.log(response);
