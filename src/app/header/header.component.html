@@ -65,8 +65,8 @@
         style="justify-content: end"
       >
         <div class="col" id="header-a">
-          <div class="dropdown">
-            <button class="dropbtn rounded-pill">{{ this.language }}</button>
+          <div class="dropdown" style="margin-top: 5px">
+            <button class="dropbtn">{{ this.language }}</button>
             <div class="dropdown-content">
               <a (click)="testLanguage('en', 'English')"> English</a>
               <a (click)="testLanguage('de', 'German')"> German </a>
@@ -112,15 +112,24 @@
             *ngIf="!_loginservice.show"
             >{{ "Login" | translate }}</a
           >
-          <button
+
+          <a
+            href="#"
+            class="rep"
+            routerLink="/register"
+            *ngIf="!_loginservice.show"
+            >{{ "Register" | translate }}</a
+          >
+
+          <!-- <button
             type="button"
-            class="btn btn-primary pt-2"
+            class="btn-primary pt-2"
             *ngIf="!_loginservice.show"
           >
-            <a href="#" class="" routerLink="/register" style="color: white">{{
+            <a href="#" class="" routerLink="/register" style="color: black">{{
               "Register" | translate
             }}</a>
-          </button>
+          </button> -->
           <div
             class="profile-icon"
             (click)="toggleDropdown()"

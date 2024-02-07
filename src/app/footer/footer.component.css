@@ -45,7 +45,7 @@
 }
 .navbar {
   top: 17px;
-  left: 15px;
+  /* left: 15px; */
 }
 .hand-cursor {
   cursor: pointer;

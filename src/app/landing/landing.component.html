@@ -1,76 +1,27 @@
-<div class="container bgimage">
-  <a class="navbar" href="#"
-    ><img
+<div class="bgimage">
+  <div class="container">
+    <a class="navbar" href="#"
+      ><img
+        id="header-img"
+        [src]="landing_header.image"
+        class="img-responsive icons-img"
+        alt=""
+        style="position: absolute; margin-top: 30%"
+    /></a>
+    <!-- <img
       id="header-img"
-      [src]="landing_header.image"
-      class="img-responsive icons-img"
+      src="assets/image/my-element.gif"
+      class="img-responsive icons-img hide"
       alt=""
-      style="position: absolute; margin-top: 35%"
-  /></a>
-  <!-- <img
-    id="header-img"
-    src="assets/image/my-element.gif"
-    class="img-responsive icons-img hide"
-    alt=""
-    style="
-      height: auto;
-      width: 30%;
-      transform: rotate(0deg);
-      position: absolute;
-      margin-left: 70%;
-      margin-top: 20%;
-    "
-  /> -->
-  <img
-    id="header-img"
-    src="assets/image/my-element.gif"
-    class="img-responsive icons-img hide"
-    alt=""
-    style="
-      height: auto;
-      width: 30%;
-      transform: rotate(10deg);
-      position: absolute;
-      margin-left: 58%;
-      margin-top: 23%;
-    "
-  />
-  <div class="p-4" style="margin-top: 25%; position: relative">
-    <div class="font">
-      <h1 class="font">{{ landing_header.heading }}</h1>
-      <h4 class="font" style="padding-top: 5%" [innerHtml]="htmllanding_header">
-        <!-- ‘Your free, very secure digital school space, to manage your schools
-        data and the educational path, the future of your children’ -->
-      </h4>
-    </div>
-    <div
-      class="text-center"
-      id="button"
-      style="color: #311fe7; padding-top: 3%"
-    >
-      <button class="btn btn-primary">
-        {{ "OpenyourMaiaXsafeforfree" | translate }}
-      </button>
-    </div>
-  </div>
-  <div class="row p-4">
-    <div class="col col-sm-7 align">
-      <h3 class="font">
-        {{ session1.heading }}
-      </h3>
-      <h6 class="font" [innerHtml]="htmlContent">
-        <!-- {{session1.description}} -->
-      </h6>
-    </div>
-    <div class="col col-sm-5">
-      <a class="navbar" href="#"
-        ><img
-          id="header-img"
-          [src]="session1.image"
-          class="img-responsive icons-img"
-          alt=""
-      /></a>
-    </div>
+      style="
+        height: auto;
+        width: 30%;
+        transform: rotate(0deg);
+        position: absolute;
+        margin-left: 70%;
+        margin-top: 20%;
+      "
+    /> -->
     <img
       id="header-img"
       src="assets/image/my-element.gif"
@@ -79,137 +30,192 @@
       style="
         height: auto;
         width: 30%;
-        transform: rotate(360deg);
+        transform: rotate(10deg);
         position: absolute;
-        margin-left: 25%;
-        margin-top: 14%;
+        margin-left: 58%;
+        margin-top: 23%;
       "
     />
-  </div>
-  <div class="row p-4">
-    <div class="col col-sm-5">
-      <a class="nav" href="#"
-        ><img
-          id="header-img"
-          [src]="session2.image"
-          class="img-responsive icons-img"
-          alt=""
-      /></a>
+    <div class="" style="margin-top: 23%; position: relative">
+      <div class="font">
+        <h1 class="font">{{ landing_header.heading }}</h1>
+        <h4
+          class="font"
+          style="padding-top: 3%"
+          [innerHtml]="htmllanding_header"
+        >
+          <!-- ‘Your free, very secure digital school space, to manage your schools
+          data and the educational path, the future of your children’ -->
+        </h4>
+      </div>
+      <div
+        class="text-center"
+        id="button"
+        style="color: #311fe7; padding-top: 3%"
+      >
+        <button class="btn btn-primary">
+          {{ "OpenyourMaiaXsafeforfree" | translate }}
+        </button>
+      </div>
     </div>
-    <div class="col col-sm-7 align">
-      <h3 class="font">
-        {{ session2.heading }}
-      </h3>
-      <h6 class="font" [innerHtml]="htmlContent1">
-        <!-- ‘Free access to your data, share your data between schools, educational
-        institutions, your future employer to craft the future you envision.’ -->
-      </h6>
+    <div class="row">
+      <div class="col col-sm-7 align">
+        <h3 class="font">
+          {{ session1.heading }}
+        </h3>
+        <h6 class="font" [innerHtml]="htmlContent">
+          <!-- {{session1.description}} -->
+        </h6>
+      </div>
+      <div class="col col-sm-5">
+        <a class="navbar" href="#"
+          ><img
+            id="header-img"
+            [src]="session1.image"
+            class="img-responsive icons-img"
+            alt=""
+        /></a>
+      </div>
+      <img
+        id="header-img"
+        src="assets/image/my-element.gif"
+        class="img-responsive icons-img hide"
+        alt=""
+        style="
+          height: auto;
+          width: 30%;
+          transform: rotate(360deg);
+          position: absolute;
+          margin-left: 25%;
+          margin-top: 14%;
+        "
+      />
     </div>
-  </div>
-  <div class="text-center p-3" style="color: #311fe7">
-    <button class="btn btn-primary">
-      {{ "CreateYourMaiaXaccount" | translate }}
-    </button>
-  </div>
-  <div class="p-4">
+    <div class="row">
+      <div class="col col-sm-5">
+        <a class="nav" href="#"
+          ><img
+            id="header-img"
+            [src]="session2.image"
+            class="img-responsive icons-img"
+            alt=""
+        /></a>
+      </div>
+      <div class="col col-sm-7 align">
+        <h3 class="font">
+          {{ session2.heading }}
+        </h3>
+        <h6 class="font" [innerHtml]="htmlContent1">
+          <!-- ‘Free access to your data, share your data between schools, educational
+          institutions, your future employer to craft the future you envision.’ -->
+        </h6>
+      </div>
+    </div>
+    <div class="text-center" style="color: #311fe7">
+      <button class="btn btn-primary">
+        {{ "CreateYourMaiaXaccount" | translate }}
+      </button>
+    </div>
+    <div class="">
+      <div>
+        <h2 class="justify-content-center">{{ landindsession_2.heading }}</h2>
+      </div>
+      <div>
+        <h4>{{ landindsession_2.heading2 }}</h4>
+      </div>
+      <div>
+        <h6 class="modular pt-1" [innerHtml]="htmllaningsession2">
+          <!-- We create a modular, data focused educational path together with you by
+          crafting your future together with you -->
+        </h6>
+      </div>
+      <!-- <div class="p-1">
+        <h6 class="modular">
+          We precisely guide you in your knowledge gaps through data. The most<br />
+          time efficient, effective way to achieve your future goals!
+        </h6>
+      </div> -->
+      <div class="text-center">
+        <button type="button" class="btn btn-light">Discover more</button>
+      </div>
+    </div>
+    <div class="container mt-5">
+      <div class="container-fluid">
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let image of images">
+            <div class="wrapper">
+              <img
+                [src]="image.image"
+                alt="Random first slide"
+                style="height: 90%; width: 100%"
+              />
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2>{{ "YourThreePillars" | translate }}</h2>
+    </div>
     <div>
-      <h2 class="justify-content-center">{{ landindsession_2.heading }}</h2>
-    </div>
-    <div>
-      <h4>{{ landindsession_2.heading2 }}</h4>
-    </div>
-    <div>
-      <h6 class="modular pt-1" [innerHtml]="htmllaningsession2">
-        <!-- We create a modular, data focused educational path together with you by
-        crafting your future together with you -->
-      </h6>
-    </div>
-    <!-- <div class="p-1">
-      <h6 class="modular">
-        We precisely guide you in your knowledge gaps through data. The most<br />
-        time efficient, effective way to achieve your future goals!
-      </h6>
-    </div> -->
-    <div class="text-center p-3">
-      <button type="button" class="btn btn-light">Discover more</button>
-    </div>
-  </div>
-  <div class="container mt-5">
-    <div class="container-fluid">
-      <ngb-carousel>
-        <ng-template ngbSlide *ngFor="let image of images">
-          <div class="wrapper">
-            <img
-              [src]="image.image"
-              alt="Random first slide"
-              style="height: 90%; width: 100%"
-            />
+      <div class="row">
+        <div class="col text-center alignall">
+          <div class="p-1">
+            <a class="navb" href="#"
+              ><img
+                id="header-img"
+                [src]="card1.image"
+                class="img-responsive sharedata-img"
+                alt=""
+            /></a>
           </div>
-        </ng-template>
-      </ngb-carousel>
-    </div>
-  </div>
-  <div class="mt-4">
-    <h2>{{ "YourThreePillers" | translate }}</h2>
-  </div>
-  <div>
-    <div class="row p-5">
-      <div class="col text-center alignall">
-        <div class="p-1">
-          <a class="navb" href="#"
-            ><img
-              id="header-img"
-              [src]="card1.image"
-              class="img-responsive sharedata-img"
-              alt=""
-          /></a>
+          <h4>{{ card1.heading }}</h4>
+          <p
+            style="text-align: justify; text-justify: auto"
+            [innerHtml]="htmlCard1"
+          ></p>
         </div>
-        <h4>{{ card1.heading }}</h4>
-        <p
-          style="text-align: justify; text-justify: auto"
-          [innerHtml]="htmlCard1"
-        ></p>
-      </div>
-      <div class="col text-center alignall">
-        <div class="p-2">
-          <a class="navb" href="#"
-            ><img
-              id="header-img"
-              [src]="card2.image"
-              class="img-responsive sharedata-img"
-              alt=""
-          /></a>
+        <div class="col text-center alignall">
+          <div class="p-2">
+            <a class="navb" href="#"
+              ><img
+                id="header-img"
+                [src]="card2.image"
+                class="img-responsive sharedata-img"
+                alt=""
+            /></a>
+          </div>
+          <h4>{{ card2.heading }}</h4>
+          <p
+            style="text-align: justify; text-justify: auto"
+            class="p-2"
+            [innerHtml]="htmlCard2"
+          >
+            <!-- With up to 50GB of free space, you can use Maia X to back up all your
+            important files – even your not-so-important ones tooWith up to 50GB
+            of free space -->
+          </p>
         </div>
-        <h4>{{ card2.heading }}</h4>
-        <p
-          style="text-align: justify; text-justify: auto"
-          class="p-2"
-          [innerHtml]="htmlCard2"
-        >
-          <!-- With up to 50GB of free space, you can use Maia X to back up all your
-          important files – even your not-so-important ones tooWith up to 50GB
-          of free space -->
-        </p>
-      </div>
-      <div class="col text-center alignall">
-        <div class="p-2">
-          <a class="navb" href="#"
-            ><img
-              id="header-img"
-              [src]="card3.image"
-              class="img-responsive sharedata-img"
-              alt=""
-          /></a>
+        <div class="col text-center alignall">
+          <div class="p-2">
+            <a class="navb" href="#"
+              ><img
+                id="header-img"
+                [src]="card3.image"
+                class="img-responsive sharedata-img"
+                alt=""
+            /></a>
+          </div>
+          <h4>{{ card3.heading }}</h4>
+          <p
+            style="text-align: justify; text-justify: auto"
+            [innerHtml]="htmlCard3"
+          >
+            <!-- Easily share your Maia X files and folders with friends and
+            colleagues, even people without Maia X accounts. And when sharing,
+            you’re still in control. -->
+          </p>
         </div>
-        <h4>{{ card3.heading }}</h4>
-        <p
-          style="text-align: justify; text-justify: auto"
-          [innerHtml]="htmlCard3"
-        >
-          <!-- Easily share your Maia X files and folders with friends and
-          colleagues, even people without Maia X accounts. And when sharing,
-          you’re still in control. -->
-        </p>
       </div>
     </div>
   </div>
